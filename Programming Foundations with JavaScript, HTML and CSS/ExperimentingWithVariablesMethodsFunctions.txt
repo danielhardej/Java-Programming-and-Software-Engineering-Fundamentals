@@ -1,0 +1,31 @@
+// write your code here
+function square(x){
+	var ans = x*x;
+	return ans;
+}
+
+print(square(12));
+
+function addNumbers(a, b, c) {
+    var ans = a + b + c;
+    return ans;
+}
+
+print(addNumbers(1,2,3));
+
+function addStrings(str1, str2, str3) {
+    var strNew = str1 + str2 + str3;
+    return strNew;
+}
+
+print(addStrings("This ", "is a ", "String!"));
+
+function getImageDimensions(imgFileName) {
+    var image = new SimpleImage(imgFileName);
+    var imgWidth = image.getWidth();
+    var imgHeight = image.getHeight();
+    print("Width: " + imgWidth);
+    print("Height: " + imgHeight);
+}
+
+getImageDimensions("palm-and-beach.png");

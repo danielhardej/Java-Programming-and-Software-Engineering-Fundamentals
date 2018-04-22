@@ -1,0 +1,13 @@
+var img = new SimpleImage(200,200);
+print(img);
+
+for (var pixel of img.values()) {
+    var newB = 0;
+    var newG = 255;
+    var newR = 255;
+    pixel.setRed(newR);
+    pixel.setBlue(newB);
+    pixel.setGreen(newG);
+}
+
+print(img);
