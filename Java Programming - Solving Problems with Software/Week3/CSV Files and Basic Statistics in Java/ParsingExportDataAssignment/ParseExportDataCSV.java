@@ -93,8 +93,8 @@ public class ParseExportDataCSV {
     public void findQuizAnswers() {
         FileResource fr = new FileResource();
         CSVParser parser = fr.getCSVParser();
-        //listExportersTwoProducts(parser, "fish", "nuts");
-        //System.out.println(numberOfExporters(parser, "sugar"));
+        //listExportersTwoProducts(parser, "cotton", "flowers");
+        //System.out.println(numberOfExporters(parser, "cocoa"));
         //System.out.println(countryInfo(parser, "Nauru"));
         bigExporters(parser, "$999,999,999,999");
     }
