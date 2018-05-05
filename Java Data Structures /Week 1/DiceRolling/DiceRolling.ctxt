@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=DiceRolling
+comment1.params=rolls
+comment1.target=void\ simulate(int)
+comment2.params=rolls
+comment2.target=void\ simpleSimulate(int)
+numComments=3

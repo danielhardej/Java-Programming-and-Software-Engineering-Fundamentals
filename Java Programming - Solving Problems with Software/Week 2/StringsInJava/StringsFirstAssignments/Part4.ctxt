@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Part4
+comment1.params=mainString\ subString
+comment1.target=boolean\ hasString(java.lang.String,\ java.lang.String)
+comment2.params=
+comment2.target=void\ runCheck()
+numComments=3
