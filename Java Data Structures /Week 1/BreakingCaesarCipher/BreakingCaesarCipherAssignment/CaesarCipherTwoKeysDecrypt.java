@@ -15,25 +15,24 @@ public class CaesarCipherTwoKeysDecrypt {
     public String decryptOneKey (String encrypted) {
         CaesarCipher cc = new CaesarCipher();
         
-        int dKey = decryptionKey(encrypted);
+        int dKey = encryptionKey(encrypted);
         
         String decrypted = cc.encrypt(encrypted, dKey);
         return decrypted;
     }
     
-    public int decryptionKey(String encrypted) {
+    public int encryptionKey(String encrypted) {
         
         int [] freq = countOccurences(encrypted.toString());
         int maxIdx = maxIndex(freq);
         // char mostFreqChar = alpha.charAt(maxIdx);
         int eKey = maxIdx - 4;
         if (maxIdx < 4) {
-            eKey = 22 + maxIdx;
+            eKey = 26 - (4-maxIdx);
         }
         
-        int dKey = 26-eKey;
         
-        return dKey;
+        return eKey;
     }
     
     public String decryptTwoKeys (String encrypted) {
@@ -49,11 +48,13 @@ public class CaesarCipherTwoKeysDecrypt {
             }
         }
         
-        int dKey1 = decryptionKey(encryptedHalf1.toString());
+        int dKey1 = encryptionKey(encryptedHalf1.toString());
         System.out.println("Decryption key 1: " + dKey1);
-        int dKey2 = decryptionKey(encryptedHalf2.toString());
+        int dKey2 = encryptionKey(encryptedHalf2.toString());
         System.out.println("Decryption key 2: " + dKey2);
         
+        dKey1 = 26-dKey1;
+        dKey2 = 26-dKey2;
         String decrypted = cc.encryptTwoKeys(encrypted, dKey1, dKey2);
         
         return decrypted.toString();
@@ -91,7 +92,7 @@ public class CaesarCipherTwoKeysDecrypt {
     }
     
     public void testDecryptTwoKeys () {
-        //String encrypted = "";
+        //String encrypted = "Aal uttx hm aal Qtct Fhljha pl Wbdl. Pvxvxlx!";
         FileResource fr = new FileResource();
         String encrypted = fr.asString();
         String decrypted = decryptTwoKeys(encrypted);

@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=CaesarCipherTwo
+comment1.params=key1\ key2
+comment1.target=CaesarCipherTwo(int,\ int)
+comment2.params=message
+comment2.target=int[]\ countOccurences(java.lang.String)
+comment3.params=vals
+comment3.target=int\ maxIndex(int[])
+comment4.params=encrypted
+comment4.target=int\ encryptionKey(java.lang.String)
+comment5.params=input\ start
+comment5.target=java.lang.String\ halfOfString(java.lang.String,\ int)
+comment6.params=inputString
+comment6.target=java.lang.String\ encrypt(java.lang.String)
+comment7.params=input
+comment7.target=java.lang.String\ decrypt(java.lang.String)
+numComments=8
