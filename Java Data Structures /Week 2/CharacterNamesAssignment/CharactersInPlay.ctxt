@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=CharactersInPlay
+comment1.params=
+comment1.target=CharactersInPlay()
+comment2.params=person
+comment2.target=void\ update(java.lang.String)
+comment3.params=
+comment3.target=void\ findAllCharacters()
+comment4.params=num1\ num2
+comment4.target=void\ charactersWithNumParts(int,\ int)
+comment5.params=
+comment5.target=int\ findIndexOfMax()
+comment6.params=maxIdx
+comment6.target=int\ mostSpeakingParts(int)
+comment7.params=maxIdx
+comment7.target=java.lang.String\ characterWithMostParts(int)
+comment8.params=s
+comment8.target=boolean\ isUpperCase(java.lang.String)
+comment9.params=
+comment9.target=void\ tester()
+numComments=10

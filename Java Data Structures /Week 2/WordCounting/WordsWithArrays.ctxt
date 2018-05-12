@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=WordsWithArrays
+comment1.params=
+comment1.target=WordsWithArrays()
+comment2.params=
+comment2.target=void\ readWords()
+comment3.params=list\ word\ number
+comment3.target=boolean\ contains(java.lang.String[],\ java.lang.String,\ int)
+comment4.params=
+comment4.target=int\ numberOfUniqueWords()
+comment5.params=
+comment5.target=void\ tester()
+numComments=6
