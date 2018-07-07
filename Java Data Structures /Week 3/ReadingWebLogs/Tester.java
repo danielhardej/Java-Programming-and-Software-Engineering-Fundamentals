@@ -27,7 +27,7 @@ public class Tester
     
     public void testCountUniqueIPs() {
         LogAnalyzer la = new LogAnalyzer();
-        la.readFile("short-test_log.txt");
+        la.readFile("weblog2_log.txt");
         int uniqueIPs = la.countUniqueIPs();
         System.out.println("There are " + uniqueIPs + " unique IPs");
         
@@ -35,22 +35,33 @@ public class Tester
     
     public void testPrintAllHigherThenNum() {
         LogAnalyzer la = new LogAnalyzer();
-        la.readFile("short-test_log.txt");
-        la.printAllHigherThenNum(200);
+        la.readFile("weblog1_log.txt");
+        la.printAllHigherThenNum(400);
     }
     
     public void testUniqueIPVisitsOnDay() {
         LogAnalyzer la = new LogAnalyzer();
-        la.readFile("short-test_log.txt");
-        ArrayList<String> arr1 = la.uniqueIPVisitsOnDay("Sep 14");
-        System.out.println("Unique IPs on Sep 14: ");
+        la.readFile("weblog2_log.txt");
+        ArrayList<String> arr1 = la.uniqueIPVisitsOnDay("Sep 27");
+        
+        System.out.println(arr1.size() + " unique IPs");
+        System.out.println("Unique IPs: ");
         for (String IP : arr1) {
             System.out.println(IP);
         }
+        /*
         ArrayList<String> arr2 = la.uniqueIPVisitsOnDay("Sep 30");
         System.out.println("Unique IPs on Sep 30: ");
         for (String IP : arr2) {
             System.out.println(IP);
         }
+        */
+    }
+    
+    public void testCountUniqueIPsInRange() {
+        LogAnalyzer la = new LogAnalyzer();
+        la.readFile("weblog2_log.txt");
+        System.out.println(la.countUniqueIPsInRange(400,499));
+        
     }
 }
