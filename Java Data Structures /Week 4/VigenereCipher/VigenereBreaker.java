@@ -1,5 +1,6 @@
 import java.util.*;
 import edu.duke.*;
+import java.io.*;
 
 public class VigenereBreaker {
     // Part I
@@ -69,9 +70,12 @@ public class VigenereBreaker {
         // key length.
         int[] wordCount = new int[100];
         
+        // find the most common char in that dictionary -> pass to tryKeyLength
+        char mostCommonCharacter = mostCommonChar(dictionary);
+        
         // Find the key length that yields the highest count of real words
         for (int keyLen = 1; keyLen < 100; keyLen++) {
-            int[] key = tryKeyLength(encrypted, keyLen, 'e');
+            int[] key = tryKeyLength(encrypted, keyLen, mostCommonCharacter);
             VigenereCipher vc = new VigenereCipher(key);
             String decrypted = vc.decrypt(encrypted);
             //System.out.println(decrypted);
@@ -91,7 +95,7 @@ public class VigenereBreaker {
         System.out.println("The largest word count is: "+largestWordCount);
         
         int realKeyIdx = idxOfLargestCount;
-        int[] realKey = tryKeyLength(encrypted, realKeyIdx, 'e');
+        int[] realKey = tryKeyLength(encrypted, realKeyIdx, mostCommonCharacter);
         
         System.out.println("The key is: " + Arrays.toString(realKey));
         System.out.println("The key length is: " + realKeyIdx);
@@ -101,6 +105,7 @@ public class VigenereBreaker {
         
         return decrypted;
     }
+    
     
     public void breakVigenere () {
         FileResource encryptedFile = new FileResource();
@@ -112,4 +117,86 @@ public class VigenereBreaker {
         String decryptedStr = breakForLanguage(encryptedStr, dictionary);
         System.out.println(decryptedStr);
     }
-}
+    
+    
+    public char mostCommonChar(HashSet<String> words) {
+        char mostCommonChar = ' ';
+        
+        HashMap<Character, Integer> charCount = new HashMap<Character, Integer>();
+        
+        for (String word : words) {
+            for (char c : word.toCharArray()) {
+                if ( !(charCount.containsKey(c)) ) {
+                    charCount.put(c, 1);
+                }
+                else {
+                    charCount.put(c, (charCount.get(c) + 1));
+                }
+            }
+        }
+        
+        int highestCharCount = 0;
+        for (char c : charCount.keySet()) {
+            if (charCount.get(c) > highestCharCount) {
+                highestCharCount = charCount.get(c);
+                mostCommonChar = c;
+            }
+        }
+        
+        return mostCommonChar;
+    }
+    
+    public void breakForAllLangs(String encrypted, HashMap<String, HashSet<String>> languages) {
+        
+        HashMap<String, Integer> realWordsInLang = new HashMap<String, Integer>();
+        
+        
+        // try with each language in the HashSet languages - use breakForLanguage
+        for (String language : languages.keySet()) {
+            HashSet<String> currentDict = languages.get(language);
+            String decryptedMessage = breakForLanguage(encrypted, currentDict);
+            
+            int realWordCountForLang = countWords(decryptedMessage, currentDict);
+            
+            realWordsInLang.put(language, realWordCountForLang);
+        }
+
+        // Pick the best language
+        int highestWordCount = 0;
+        String bestLang = null;
+        for (String lang : realWordsInLang.keySet()) {
+            if (realWordsInLang.get(lang) > highestWordCount) {
+                highestWordCount = realWordsInLang.get(lang);
+                bestLang = lang;
+            }
+        }
+        
+        // get decrypted message
+        String decryptedMessage = breakForLanguage(encrypted, languages.get(bestLang));
+        System.out.println(decryptedMessage);
+    }
+    
+    
+    
+    public void breakVigenereAnyLang () {
+        FileResource encryptedFile = new FileResource();
+        String encryptedStr = encryptedFile.asString();
+        
+        HashMap<String, HashSet<String>> allDicts = new HashMap<String, HashSet<String>>();
+        
+        // for each dict in a set of dicts
+        DirectoryResource dr  = new DirectoryResource();
+        
+        for (File f : dr.selectedFiles()) {
+            // open the dict
+            FileResource dict = new FileResource(f);
+            HashSet<String> dictionary = readDictionary(dict);
+            // add dict to the HashMap dicts
+            String languageName = f.toString();
+            allDicts.put(languageName, dictionary);
+        }
+        
+        breakForAllLangs(encryptedStr, allDicts);
+        }
+    }
+

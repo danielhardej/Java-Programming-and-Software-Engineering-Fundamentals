@@ -18,17 +18,20 @@ public class Tester {
     
     public void testTryKeyLength() {
         VigenereBreaker vb = new VigenereBreaker();
-        FileResource encryptedFile = new FileResource("messages/secretmessage1.txt");
+        FileResource encryptedFile = new FileResource("messages/secretmessage2.txt");
         String encryptedStr = encryptedFile.asString();
-        int testKeyLen = 4;
+        int testKeyLen = 38;
         int[] testKey = vb.tryKeyLength(encryptedStr, testKeyLen, 'e');
         
         VigenereCipher newVC = new VigenereCipher(testKey);
         String testDecrypted = newVC.decrypt(encryptedStr);
-        String firstLineDecrypted = newVC.decrypt("Hhdiu LVXNEW uxh WKWVCEW, krg k wbbsqa si Mmwcjiqm");
-        //System.out.println(testDecrypted.substring(20));
-        System.out.println(firstLineDecrypted);
+        
         System.out.println(Arrays.toString(testKey));
+        
+        FileResource dict = new FileResource();
+        HashSet<String> dictionary = vb.readDictionary(dict);
+        System.out.println("Number of valid words: "+ vb.countWords(testDecrypted,dictionary));
+        
     }
     
     
