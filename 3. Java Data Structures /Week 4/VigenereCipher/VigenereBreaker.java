@@ -159,6 +159,8 @@ public class VigenereBreaker {
             int realWordCountForLang = countWords(decryptedMessage, currentDict);
             
             realWordsInLang.put(language, realWordCountForLang);
+            System.out.println("Number of words for " + language + ": " + realWordsInLang.get(language));
+            
         }
 
         // Pick the best language
@@ -174,6 +176,9 @@ public class VigenereBreaker {
         // get decrypted message
         String decryptedMessage = breakForLanguage(encrypted, languages.get(bestLang));
         System.out.println(decryptedMessage);
+        
+        System.out.println("Language: " + bestLang);
+        
     }
     
     
@@ -192,9 +197,11 @@ public class VigenereBreaker {
             FileResource dict = new FileResource(f);
             HashSet<String> dictionary = readDictionary(dict);
             // add dict to the HashMap dicts
-            String languageName = f.toString();
+            String languageName = f.getName();
             allDicts.put(languageName, dictionary);
         }
+        
+        
         
         breakForAllLangs(encryptedStr, allDicts);
         }

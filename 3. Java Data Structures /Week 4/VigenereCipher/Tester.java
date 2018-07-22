@@ -40,4 +40,9 @@ public class Tester {
         VigenereBreaker vb = new VigenereBreaker();
         vb.breakVigenere();
     }
+    
+    public void testBreakVigenereAnyLang () {
+        VigenereBreaker vb = new VigenereBreaker();
+        vb.breakVigenereAnyLang();
+    }
 }
