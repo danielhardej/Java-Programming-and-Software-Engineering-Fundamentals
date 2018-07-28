@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=QuakeSort
+comment1.params=quakes
+comment1.target=QuakeEntry\ getSmallestMagnitude(java.util.ArrayList)
+comment2.params=in
+comment2.target=java.util.ArrayList\ sortByMagnitude(java.util.ArrayList)
+comment3.params=
+comment3.target=void\ testSort()
+comment3.text=tester\ method\ to\ use\ in\ BlueJ
+numComments=4

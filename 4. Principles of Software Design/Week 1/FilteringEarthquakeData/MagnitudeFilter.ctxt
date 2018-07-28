@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=MagnitudeFilter
+comment0.text=\n\ Write\ a\ description\ of\ MagnitudeFilter\ here.\n\ \n\ @author\ Daniel\ Hardej\n\ @version\ v1.0\n
+comment1.params=minMag\ maxMag
+comment1.target=MagnitudeFilter(double,\ double)
+comment2.params=qe
+comment2.target=boolean\ satisfies(QuakeEntry)
+comment3.params=
+comment3.target=java.lang.String\ getName()
+numComments=4

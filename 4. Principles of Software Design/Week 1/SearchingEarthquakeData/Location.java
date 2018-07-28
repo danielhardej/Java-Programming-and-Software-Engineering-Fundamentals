@@ -41,7 +41,7 @@ import java.util.StringTokenizer;
  * parameters are optional.
  */
 
-public class Location  {
+public class Location {
     /**
      * Constant used to specify formatting of a latitude or longitude
      * in the form "[+-]DDD.DDDDD where D indicates degrees.
@@ -125,10 +125,10 @@ public class Location  {
     public Location(Location l) {
         set(l);
     }
-    
+
     public Location(double latitude, double longitude){
-    	mLatitude = latitude;
-    	mLongitude = longitude;
+        mLatitude = latitude;
+        mLongitude = longitude;
     }
 
     /**
@@ -183,12 +183,12 @@ public class Location  {
      */
     public static String convert(double coordinate, int outputType) {
         if (coordinate < -180.0 || coordinate > 180.0 ||
-            Double.isNaN(coordinate)) {
+        Double.isNaN(coordinate)) {
             throw new IllegalArgumentException("coordinate=" + coordinate);
         }
         if ((outputType != FORMAT_DEGREES) &&
-            (outputType != FORMAT_MINUTES) &&
-            (outputType != FORMAT_SECONDS)) {
+        (outputType != FORMAT_MINUTES) &&
+        (outputType != FORMAT_SECONDS)) {
             throw new IllegalArgumentException("outputType=" + outputType);
         }
 
@@ -275,11 +275,11 @@ public class Location  {
             }
             if (min < 0 || min > 59) {
                 throw new IllegalArgumentException("coordinate=" +
-                        coordinate);
+                    coordinate);
             }
             if (sec < 0 || sec > 59) {
                 throw new IllegalArgumentException("coordinate=" +
-                        coordinate);
+                    coordinate);
             }
 
             val = deg*3600.0 + min*60.0 + sec;
@@ -291,7 +291,7 @@ public class Location  {
     }
 
     private static void computeDistanceAndBearing(double lat1, double lon1,
-        double lat2, double lon2, float[] results) {
+    double lat2, double lon2, float[] results) {
         // Based on http://www.ngs.noaa.gov/PUBS_LIB/inverse.pdf
         // using the "Inverse Formula" (section 4)
 
@@ -343,31 +343,31 @@ public class Location  {
                 cosU1cosU2 * sinLambda / sinSigma; // (17)
             cosSqAlpha = 1.0 - sinAlpha * sinAlpha;
             cos2SM = (cosSqAlpha == 0) ? 0.0 :
-                cosSigma - 2.0 * sinU1sinU2 / cosSqAlpha; // (18)
+            cosSigma - 2.0 * sinU1sinU2 / cosSqAlpha; // (18)
 
             double uSquared = cosSqAlpha * aSqMinusBSqOverBSq; // defn
             A = 1 + (uSquared / 16384.0) * // (3)
-                (4096.0 + uSquared *
-                 (-768 + uSquared * (320.0 - 175.0 * uSquared)));
+            (4096.0 + uSquared *
+                (-768 + uSquared * (320.0 - 175.0 * uSquared)));
             double B = (uSquared / 1024.0) * // (4)
                 (256.0 + uSquared *
-                 (-128.0 + uSquared * (74.0 - 47.0 * uSquared)));
+                    (-128.0 + uSquared * (74.0 - 47.0 * uSquared)));
             double C = (f / 16.0) *
                 cosSqAlpha *
                 (4.0 + f * (4.0 - 3.0 * cosSqAlpha)); // (10)
             double cos2SMSq = cos2SM * cos2SM;
             deltaSigma = B * sinSigma * // (6)
-                (cos2SM + (B / 4.0) *
-                 (cosSigma * (-1.0 + 2.0 * cos2SMSq) -
-                  (B / 6.0) * cos2SM *
-                  (-3.0 + 4.0 * sinSigma * sinSigma) *
-                  (-3.0 + 4.0 * cos2SMSq)));
+            (cos2SM + (B / 4.0) *
+                (cosSigma * (-1.0 + 2.0 * cos2SMSq) -
+                    (B / 6.0) * cos2SM *
+                    (-3.0 + 4.0 * sinSigma * sinSigma) *
+                    (-3.0 + 4.0 * cos2SMSq)));
 
             lambda = L +
-                (1.0 - C) * f * sinAlpha *
-                (sigma + C * sinSigma *
-                 (cos2SM + C * cosSigma *
-                  (-1.0 + 2.0 * cos2SM * cos2SM))); // (11)
+            (1.0 - C) * f * sinAlpha *
+            (sigma + C * sinSigma *
+                (cos2SM + C * cosSigma *
+                    (-1.0 + 2.0 * cos2SM * cos2SM))); // (11)
 
             double delta = (lambda - lambdaOrig) / lambda;
             if (Math.abs(delta) < 1.0e-12) {
@@ -379,12 +379,12 @@ public class Location  {
         results[0] = distance;
         if (results.length > 1) {
             float initialBearing = (float) Math.atan2(cosU2 * sinLambda,
-                cosU1 * sinU2 - sinU1 * cosU2 * cosLambda);
+                    cosU1 * sinU2 - sinU1 * cosU2 * cosLambda);
             initialBearing *= 180.0 / Math.PI;
             results[1] = initialBearing;
             if (results.length > 2) {
                 float finalBearing = (float) Math.atan2(cosU1 * sinLambda,
-                    -sinU1 * cosU2 + cosU1 * sinU2 * cosLambda);
+                        -sinU1 * cosU2 + cosU1 * sinU2 * cosLambda);
                 finalBearing *= 180.0 / Math.PI;
                 results[2] = finalBearing;
             }
@@ -410,7 +410,7 @@ public class Location  {
      * @throws IllegalArgumentException if results is null or has length < 1
      */
     public static void distanceBetween(double startLatitude, double startLongitude,
-        double endLatitude, double endLongitude, float[] results) {
+    double endLatitude, double endLongitude, float[] results) {
         if (results == null || results.length < 1) {
             throw new IllegalArgumentException("results is null or has length < 1");
         }
@@ -430,7 +430,7 @@ public class Location  {
         // See if we already have the result
         synchronized (mResults) {
             if (mLatitude != mLat1 || mLongitude != mLon1 ||
-                dest.mLatitude != mLat2 || dest.mLongitude != mLon2) {
+            dest.mLatitude != mLat2 || dest.mLongitude != mLon2) {
                 computeDistanceAndBearing(mLatitude, mLongitude,
                     dest.mLatitude, dest.mLongitude, mResults);
                 mLat1 = mLatitude;
@@ -458,7 +458,7 @@ public class Location  {
         synchronized (mResults) {
             // See if we already have the result
             if (mLatitude != mLat1 || mLongitude != mLon1 ||
-                            dest.mLatitude != mLat2 || dest.mLongitude != mLon2) {
+            dest.mLatitude != mLat2 || dest.mLongitude != mLon2) {
                 computeDistanceAndBearing(mLatitude, mLongitude,
                     dest.mLatitude, dest.mLongitude, mResults);
                 mLat1 = mLatitude;
@@ -765,8 +765,6 @@ public class Location  {
         mHasAccuracy = false;
     }
 
-
-
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
@@ -778,7 +776,7 @@ public class Location  {
         if (mTime == 0) {
             s.append(" t=?!?");
         }
-     
+
         if (mHasAltitude) s.append(" alt=").append(mAltitude);
         if (mHasSpeed) s.append(" vel=").append(mSpeed);
         if (mHasBearing) s.append(" bear=").append(mBearing);
@@ -787,4 +785,5 @@ public class Location  {
         s.append(']');
         return s.toString();
     }
+    
 }
