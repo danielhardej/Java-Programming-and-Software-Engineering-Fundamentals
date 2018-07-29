@@ -1,0 +1,30 @@
+#BlueJ class context
+comment0.target=QuakeSortInPlace
+comment1.params=
+comment1.target=QuakeSortInPlace()
+comment10.params=in
+comment10.target=void\ sortByMagnitudeWithBubbleSort(java.util.ArrayList)
+comment11.params=quakes
+comment11.target=boolean\ checkInSortedOrder(java.util.ArrayList)
+comment11.text=\n\ \ \ \ public\ void\ sortByMagnitudeWithBubbleSortTester(ArrayList<QuakeEntry>\ in)\ {\n\ \ \ \ \ \ \ \ int\ N\ \=\ in.size();\ \ \ \ \ \ \ \ \ \ //\ number\ of\ elements\ in\ array\ list\n\ \ \ \ \ \ \ \ for\ (QuakeEntry\ qe\ \:\ in)\ {\n\ \ \ \ \ \ \ \ \ \ \ \ System.out.println(qe);\n\ \ \ \ \ \ \ \ }\n\ \ \ \ \ \ \ \ for\ (int\ n\=0;\ n<N-1;\ n++)\ {\n\ \ \ \ \ \ \ \ \ \ \ \ onePassBubbleSort(in,\ n);\n\ \ \ \ \ \ \ \ \ \ \ \ System.out.println("Quakes\ after\ pass\ "+n);\n\ \ \ \ \ \ \ \ \ \ \ \ for\ (QuakeEntry\ qe\ \:\ in)\ {\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ System.out.println(qe);\n\ \ \ \ \ \ \ \ \ \ \ \ }\n\ \ \ \ \ \ \ \ }\n\ \ \ \ }\n
+comment12.params=in
+comment12.target=void\ sortByMagnitudeWithBubbleSortWithCheck(java.util.ArrayList)
+comment13.params=in
+comment13.target=void\ sortByMagnitudeWithCheck(java.util.ArrayList)
+comment2.params=quakes\ from
+comment2.target=int\ getSmallestMagnitude(java.util.ArrayList,\ int)
+comment3.params=in
+comment3.target=void\ sortByMagnitude(java.util.ArrayList)
+comment4.params=
+comment4.target=void\ testSort()
+comment5.params=
+comment5.target=void\ createCSV()
+comment6.params=list
+comment6.target=void\ dumpCSV(java.util.ArrayList)
+comment7.params=quakeData\ from
+comment7.target=int\ getLargestDepth(java.util.ArrayList,\ int)
+comment8.params=in
+comment8.target=void\ sortByLargestDepth(java.util.ArrayList)
+comment9.params=quakeData\ numSorted
+comment9.target=void\ onePassBubbleSort(java.util.ArrayList,\ int)
+numComments=14

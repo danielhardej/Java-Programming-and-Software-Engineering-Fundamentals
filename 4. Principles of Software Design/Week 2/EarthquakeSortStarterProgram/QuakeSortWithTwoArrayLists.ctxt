@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=QuakeSortWithTwoArrayLists
+comment1.params=
+comment1.target=QuakeSortWithTwoArrayLists()
+comment2.params=quakes
+comment2.target=QuakeEntry\ getSmallestMagnitude(java.util.ArrayList)
+comment3.params=in
+comment3.target=java.util.ArrayList\ sortByMagnitude(java.util.ArrayList)
+comment4.params=
+comment4.target=void\ testSort()
+comment5.params=
+comment5.target=void\ createCSV()
+comment6.params=list
+comment6.target=void\ dumpCSV(java.util.ArrayList)
+numComments=7
