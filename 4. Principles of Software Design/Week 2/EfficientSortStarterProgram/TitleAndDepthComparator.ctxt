@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=TitleAndDepthComparator
+comment1.params=
+comment1.target=TitleAndDepthComparator()
+comment2.params=qe1\ qe2
+comment2.target=int\ compare(QuakeEntry,\ QuakeEntry)
+numComments=3

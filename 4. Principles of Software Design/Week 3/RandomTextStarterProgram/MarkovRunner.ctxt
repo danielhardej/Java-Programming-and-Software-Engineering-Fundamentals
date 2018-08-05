@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=MarkovRunner
+comment1.params=
+comment1.target=void\ runMarkovZero()
+comment2.params=
+comment2.target=void\ runMarkovOne()
+comment3.params=
+comment3.target=void\ runMarkovFour()
+comment4.params=
+comment4.target=void\ runMarkovModel()
+comment5.params=s
+comment5.target=void\ printOut(java.lang.String)
+numComments=6
