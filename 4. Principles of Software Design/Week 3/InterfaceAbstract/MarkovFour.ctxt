@@ -8,6 +8,4 @@ comment3.params=s
 comment3.target=void\ setTraining(java.lang.String)
 comment4.params=numChars
 comment4.target=java.lang.String\ getRandomText(int)
-comment5.params=key
-comment5.target=java.util.ArrayList\ getFollows(java.lang.String)
-numComments=6
+numComments=5

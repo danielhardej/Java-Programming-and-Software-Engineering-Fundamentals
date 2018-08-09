@@ -8,11 +8,11 @@
 
 import java.util.*;
 
-public class MarkovOne implements IMarkovModel {
-    private String myText;
-    private Random myRandom;
+public class MarkovOne extends AbstractMarkovModel {
+    
     
     public MarkovOne() {
+        super(1);
         myRandom = new Random();
     }
     
@@ -47,23 +47,5 @@ public class MarkovOne implements IMarkovModel {
         return sb.toString();
     }
     
-    public ArrayList<String> getFollows (String key) {
-        ArrayList<String> follows = new ArrayList<String>();
-        int pos = 0;
-        
-        while (pos < myText.length()) {
-            int start = myText.indexOf(key, pos);
-            if (start == -1) {
-                break;
-            }
-            if (start + key.length() > myText.length()-1) {
-                break;
-            }
-            String next = myText.substring(start+key.length(), start+key.length()+1);
-            follows.add(next);
-            pos = start + key.length();
-        }
-        
-        return follows;
-    }
+    
 }

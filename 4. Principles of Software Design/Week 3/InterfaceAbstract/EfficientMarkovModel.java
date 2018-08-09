@@ -1,20 +1,21 @@
 
 /**
- * Write a description of MarkovModel here.
+ * Write a description of EfficientMarkovModel here.
  * 
  * @author Daniel J Hardej
- * @version 1
+ * @version 1.0
  */
 
 import java.util.*;
 
-public class MarkovModel extends AbstractMarkovModel {
+public abstract class EfficientMarkovModel extends AbstractMarkovModel {
+    
+    private HashMap<String, ArrayList<String>> map;
     
     
-    
-    public MarkovModel(int order) {
+    public EfficientMarkovModel(int order) {
         super(order);
-        myRandom = new Random();
+        map = new HashMap<String, ArrayList<String>>();
     }
     
     
@@ -46,5 +47,15 @@ public class MarkovModel extends AbstractMarkovModel {
         return sb.toString();
     }
     
+    public void buildMap () {
+        
+    }
     
+    public ArrayList<String> getFollows (String key) {
+        return map.get(key);
+    }
+    
+    public String toString() {
+        return "Markov Model of order " + N;
+    }
 }
