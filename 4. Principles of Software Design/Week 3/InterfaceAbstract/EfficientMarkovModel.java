@@ -15,6 +15,7 @@ public abstract class EfficientMarkovModel extends AbstractMarkovModel {
     
     public EfficientMarkovModel(int order) {
         super(order);
+        
         map = new HashMap<String, ArrayList<String>>();
     }
     
@@ -29,11 +30,11 @@ public abstract class EfficientMarkovModel extends AbstractMarkovModel {
             return "";
         }
         StringBuilder sb = new StringBuilder();
-        int index = myRandom.nextInt(myText.length()-N);
-        String key = myText.substring(index, index+N);
+        int index = myRandom.nextInt(myText.length()-order);
+        String key = myText.substring(index, index+order);
         sb.append(key);
         
-        for(int k=0; k < numChars-N; k++){
+        for(int k=0; k < numChars-order; k++){
             ArrayList<String> follows = getFollows(key);
             if (follows.size() == 0) {
                 break;
@@ -48,7 +49,9 @@ public abstract class EfficientMarkovModel extends AbstractMarkovModel {
     }
     
     public void buildMap () {
-        
+        for (int i=0; i<myText.length()-order; i++) {
+            String key = myText.substring(i, i + order);
+        }
     }
     
     public ArrayList<String> getFollows (String key) {
@@ -56,6 +59,6 @@ public abstract class EfficientMarkovModel extends AbstractMarkovModel {
     }
     
     public String toString() {
-        return "Markov Model of order " + N;
+        return "Markov Model of order " + order;
     }
 }

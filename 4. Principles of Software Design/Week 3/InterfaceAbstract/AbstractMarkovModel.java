@@ -12,11 +12,11 @@ public abstract class AbstractMarkovModel implements IMarkovModel {
     
     protected String myText;
     protected Random myRandom;
-    protected static int N;
+    protected static int order;
     
     public AbstractMarkovModel(int order) {
         myRandom = new Random();
-        N = order;
+        this.order = order;
     }
     
     public void setTraining(String s) {
@@ -50,6 +50,6 @@ public abstract class AbstractMarkovModel implements IMarkovModel {
     }
     
     public String toString() {
-        return "Markov Model of order " + N;
+        return "Markov Model of order " + order;
     }
 }
