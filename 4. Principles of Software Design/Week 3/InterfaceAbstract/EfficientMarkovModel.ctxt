@@ -12,4 +12,6 @@ comment5.params=key
 comment5.target=java.util.ArrayList\ getFollows(java.lang.String)
 comment6.params=
 comment6.target=java.lang.String\ toString()
-numComments=7
+comment7.params=
+comment7.target=void\ printHashMapInfo()
+numComments=8

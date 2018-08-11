@@ -3,7 +3,7 @@
  * Write a description of MarkovModel here.
  * 
  * @author Daniel J Hardej
- * @version 1
+ * @version 1.1
  */
 
 import java.util.*;
@@ -28,11 +28,11 @@ public class MarkovModel extends AbstractMarkovModel {
             return "";
         }
         StringBuilder sb = new StringBuilder();
-        int index = myRandom.nextInt(myText.length()-N);
-        String key = myText.substring(index, index+N);
+        int index = myRandom.nextInt(myText.length()-order);
+        String key = myText.substring(index, index+order);
         sb.append(key);
         
-        for(int k=0; k < numChars-N; k++){
+        for(int k=0; k < numChars-order; k++){
             ArrayList<String> follows = getFollows(key);
             if (follows.size() == 0) {
                 break;

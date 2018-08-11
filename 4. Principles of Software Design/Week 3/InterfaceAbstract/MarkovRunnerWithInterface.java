@@ -3,7 +3,7 @@
  * Write a description of class MarkovRunner here.
  * 
  * @author Duke Software
- * @version 1.0
+ * @version 1.1
  */
 
 import edu.duke.*; 
@@ -14,7 +14,7 @@ public class MarkovRunnerWithInterface {
         markov.setTraining(text);
         System.out.println("Running with " + markov);
         for(int k=0; k < 3; k++){
-            String st= markov.getRandomText(size);
+            String st = markov.getRandomText(size);
             printOut(st);
         }
     }
@@ -39,6 +39,18 @@ public class MarkovRunnerWithInterface {
         MarkovFour mFour = new MarkovFour();
         runModel(mFour, st, size, seed);
 
+    }
+    
+    public void testHashMap() {
+        String st = "yes-this-is-a-thin-pretty-pink-thistle";
+        
+        int size = 50;
+        int seed = 42;
+        
+        EfficientMarkovModel effMarkovTwo = new EfficientMarkovModel(2);
+        runModel(effMarkovTwo, st, size, seed);
+        effMarkovTwo.printHashMapInfo();
+        
     }
 
     private void printOut(String s){

@@ -29,21 +29,19 @@ public abstract class AbstractMarkovModel implements IMarkovModel {
  
     abstract public String getRandomText(int numChars);
     
+    private String getFollowingLetter(int pos) {
+		// index of letter following key
+		int index = pos+order;
+		return myText.substring(index, index+1);
+    }
+    
     protected ArrayList<String> getFollows (String key) {
         ArrayList<String> follows = new ArrayList<String>();
-        int pos = 0;
         
-        while (pos < myText.length()) {
-            int start = myText.indexOf(key, pos);
-            if (start == -1) {
-                break;
+        for (int i = 0; i < myText.length() - order; i++) {
+            if (key.equals(myText.substring(i, i + order))) {
+                follows.add(getFollowingLetter(i));
             }
-            if (start + key.length() > myText.length()-1) {
-                break;
-            }
-            String next = myText.substring(start+key.length(), start+key.length()+1);
-            follows.add(next);
-            pos = start + key.length();
         }
         
         return follows;

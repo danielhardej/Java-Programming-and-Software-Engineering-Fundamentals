@@ -3,32 +3,32 @@
  * Write a description of EfficientMarkovModel here.
  * 
  * @author Daniel J Hardej
- * @version 1.0
+ * @version 1.2
  */
 
 import java.util.*;
 
-public abstract class EfficientMarkovModel extends AbstractMarkovModel {
+public class EfficientMarkovModel extends AbstractMarkovModel {
     
     private HashMap<String, ArrayList<String>> map;
     
     
     public EfficientMarkovModel(int order) {
         super(order);
-        
         map = new HashMap<String, ArrayList<String>>();
     }
     
     
-    
     public void setTraining(String s){
         myText = s.trim();
+        buildMap();
     }
     
     public String getRandomText(int numChars){
         if (myText == null){
             return "";
         }
+        
         StringBuilder sb = new StringBuilder();
         int index = myRandom.nextInt(myText.length()-order);
         String key = myText.substring(index, index+order);
@@ -36,11 +36,12 @@ public abstract class EfficientMarkovModel extends AbstractMarkovModel {
         
         for(int k=0; k < numChars-order; k++){
             ArrayList<String> follows = getFollows(key);
-            if (follows.size() == 0) {
+            
+            if (follows == null) {
                 break;
             }
-            index = myRandom.nextInt(follows.size());
-            String next = follows.get(index);
+            
+            String next = follows.get(myRandom.nextInt(follows.size()));
             sb.append(next);
             key = key.substring(1) + next;
         }
@@ -48,10 +49,27 @@ public abstract class EfficientMarkovModel extends AbstractMarkovModel {
         return sb.toString();
     }
     
-    public void buildMap () {
-        for (int i=0; i<myText.length()-order; i++) {
+     private void buildMap() {
+         System.out.println("Testing buildMap() for " + (myText.length() - order) + " iters...");
+
+        for (int i = 0; i < myText.length() - order; i++) {
+
             String key = myText.substring(i, i + order);
+            String follow = myText.substring(i+order, i+order+1);
+            
+            System.out.println(i + " " + key + " " +follow + " " +myText.length());
+            
+            if (map.containsKey(key)) {
+                map.get(key).add(follow);
+            }
+            else {
+                ArrayList<String> list = new ArrayList<String>();
+                list.add(follow);
+                map.put(key, list);
+            }
+            
         }
+
     }
     
     public ArrayList<String> getFollows (String key) {
@@ -60,5 +78,22 @@ public abstract class EfficientMarkovModel extends AbstractMarkovModel {
     
     public String toString() {
         return "Markov Model of order " + order;
+    }
+    
+    
+    public void printHashMapInfo() {
+       
+        int maxFollowsSize = 0;
+        for (String key : map.keySet()) {
+            maxFollowsSize = Math.max(maxFollowsSize, map.get(key).size());
+        }
+       
+        System.out.printf("Map size:\t%d\nMax arry size:\t%d\n", map.size(), maxFollowsSize);
+       
+	for (String key : map.keySet()) {
+	    System.out.printf("Key:\t[%s]\tvalues: ", key);
+	    System.out.println(map.get(key));
+	}
+
     }
 }
