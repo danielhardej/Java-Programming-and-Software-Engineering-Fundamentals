@@ -22,6 +22,7 @@ public class EfficientMarkovModel extends AbstractMarkovModel {
     public void setTraining(String s){
         myText = s.trim();
         buildMap();
+        printHashMapInfo();
     }
     
     public String getRandomText(int numChars){
@@ -50,14 +51,17 @@ public class EfficientMarkovModel extends AbstractMarkovModel {
     }
     
      private void buildMap() {
-         System.out.println("Testing buildMap() for " + (myText.length() - order) + " iters...");
-
-        for (int i = 0; i < myText.length() - order; i++) {
+        
+        for (int i = 0; i <= myText.length() - order; i++) {
+            
+            if (i == myText.length() - order) {
+                String key = myText.substring(i, i + order);
+                map.put(key, null);
+                break;
+            }
 
             String key = myText.substring(i, i + order);
             String follow = myText.substring(i+order, i+order+1);
-            
-            System.out.println(i + " " + key + " " +follow + " " +myText.length());
             
             if (map.containsKey(key)) {
                 map.get(key).add(follow);
@@ -82,18 +86,32 @@ public class EfficientMarkovModel extends AbstractMarkovModel {
     
     
     public void printHashMapInfo() {
+        System.out.println("HashMap info: ");
+        
+        int maxFollowsSize = findMaxFollowsSize();
        
-        int maxFollowsSize = 0;
-        for (String key : map.keySet()) {
-            maxFollowsSize = Math.max(maxFollowsSize, map.get(key).size());
-        }
-       
-        System.out.printf("Map size:\t%d\nMax arry size:\t%d\n", map.size(), maxFollowsSize);
-       
+        System.out.printf("Map size:\t%d\nMax array size:\t%d\n", map.size(), maxFollowsSize);
+        /*
 	for (String key : map.keySet()) {
 	    System.out.printf("Key:\t[%s]\tvalues: ", key);
 	    System.out.println(map.get(key));
 	}
+	*/
 
+    }
+    
+    public int findMaxFollowsSize() {
+        int maxFollowsSize = 0;
+        for (String key : map.keySet()) {
+            
+            if (!(map.get(key) == null)) {
+                maxFollowsSize = Math.max(maxFollowsSize, map.get(key).size());
+            }
+            else {
+                
+            }
+            
+        }
+        return maxFollowsSize;
     }
 }

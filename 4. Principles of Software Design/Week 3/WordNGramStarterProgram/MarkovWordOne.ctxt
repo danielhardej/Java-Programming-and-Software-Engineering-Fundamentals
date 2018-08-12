@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=MarkovWordOne
+comment1.params=
+comment1.target=MarkovWordOne()
+comment2.params=seed
+comment2.target=void\ setRandom(int)
+comment3.params=text
+comment3.target=void\ setTraining(java.lang.String)
+comment4.params=numWords
+comment4.target=java.lang.String\ getRandomText(int)
+comment5.params=words\ target\ start
+comment5.target=int\ indexOf(java.lang.String[],\ java.lang.String,\ int)
+comment6.params=key
+comment6.target=java.util.ArrayList\ getFollows(java.lang.String)
+numComments=7

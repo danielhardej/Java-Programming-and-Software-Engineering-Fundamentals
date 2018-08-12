@@ -14,4 +14,6 @@ comment6.params=
 comment6.target=java.lang.String\ toString()
 comment7.params=
 comment7.target=void\ printHashMapInfo()
-numComments=8
+comment8.params=
+comment8.target=int\ findMaxFollowsSize()
+numComments=9
