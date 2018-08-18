@@ -46,6 +46,11 @@ public class MarkovWordOne implements IMarkovModel {
     }
     
     private int indexOf(String[] words, String target, int start) {
+        // find the index of any occurence of the word assigned to variable
+        // target in the string array words
+        
+        // returns the index of the target word if found, otherwise returns -1
+        
         for (int k=start; k<words.length; k++) {
             if (words[k].equals(target)) {
                 return k;
@@ -54,7 +59,27 @@ public class MarkovWordOne implements IMarkovModel {
         return -1;
     }
     
+    public void testIndexOf() {
+        String testString = "this is just a test yes this is a simple test";
+        String[] testStringArr = testString.split("\\s+");
+        
+        System.out.println(indexOf(testStringArr, "this", 0));
+        System.out.println(indexOf(testStringArr, "this", 3));
+        System.out.println(indexOf(testStringArr, "frog", 0));
+        System.out.println(indexOf(testStringArr, "frog", 5));
+        System.out.println(indexOf(testStringArr, "simple", 5));
+        System.out.println(indexOf(testStringArr, "test", 5));
+    }
+    
     private ArrayList<String> getFollows(String key) {
+        // finds the words that directly follow after any occurence of the
+        // word assigned to the variable key
+        
+        // adds these words to and returns the array list 'follows'
+        
+        // uses the helper function indexOf() to find the index of any
+        // occurence of the word assigned to key in a string array
+        
         ArrayList<String> follows = new ArrayList<String>();
         int pos = 0;
         

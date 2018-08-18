@@ -2,8 +2,8 @@
 /**
  * Write a description of class MarkovRunner here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Daniel J Hardej 
+ * @version 1.0
  */
 
 import edu.duke.*;
@@ -33,7 +33,15 @@ public class MarkovRunner {
         String st = fr.asString(); 
         st = st.replace('\n', ' '); 
         MarkovWordOne markovWord = new MarkovWordOne(); 
-        runModel(markovWord, st, 200); 
+        runModel(markovWord, st, 120, 139);     // model, text, size, seed
+    }
+    
+    public void runMarkovTwo() { 
+        FileResource fr = new FileResource(); 
+        String str = fr.asString(); 
+        str = str.replace('\n', ' '); 
+        MarkovWordTwo markovWord2 = new MarkovWordTwo(); 
+        runModel(markovWord2, str, 120, 832);     // model, text, size, seed
     } 
 
     private void printOut(String s){
