@@ -1,23 +1,23 @@
+
 /**
- * Java Programming: Principles of Software Design
- * 
- * Word N-Grams Programming Exercise: WordGram Class
- * 
- * Assignment II: MarkovWord with WordGram
+ * Write a description of EfficientMarkovWord here.
  * 
  * @author Daniel J Hardej
  * @version v1.0
- * 
  */
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Random;
 
-public class MarkovWord implements IMarkovModel {
+public class EfficientMarkovWord implements IMarkovModel {
     private String[] myText;
     private Random myRandom;
     private int myOrder;
+    private HashMap<WordGram,ArrayList<String>> myMap;
     
-    public MarkovWord (int order) {
+    public EfficientMarkovWord (int order) {
         myOrder = order;
         myRandom = new Random();
     }
@@ -98,5 +98,37 @@ public class MarkovWord implements IMarkovModel {
         }
         
         return follows;
+    }
+    
+    public void buildMap() {
+        HashMap<WordGram,ArrayList<String>> mappedWords = new HashMap<WordGram, ArrayList<String>>();
+        
+        for (int i=0; i < myText.length-(myOrder-1); i++) {
+            // create a new WordGram from myText for each iteration that
+            // starts at the current location in the myText array
+            WordGram wg = new WordGram(myText, i, myOrder);
+            
+            // if a WordGram is not in the HashMap yet
+            if (!(mappedWords.containsKey(wg))) {
+                // and we HAVE NOT reached the end of the myText array
+                if ((i + myOrder)<myText.length) {
+                    // put the WordGram into an empty arraylist
+                }
+                // and we HAVE reached the end of the myText array
+                if ((i + myOrder)==myText.length) {
+                    // create a new entry with key wg and and empty ArrayList as the values
+                    
+                }
+            }
+            // if a WordGram is already in the HashMap
+            else if (mappedWords.containsKey(wg) && (i + myOrder)<myText.length) {
+                // do not enter anything for this case
+                
+            }
+        }
+    }
+    
+    public void getFollows () {
+        
     }
 }

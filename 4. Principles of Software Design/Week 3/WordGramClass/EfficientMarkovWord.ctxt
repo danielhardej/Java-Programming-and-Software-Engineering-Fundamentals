@@ -1,7 +1,7 @@
 #BlueJ class context
-comment0.target=MarkovWord
+comment0.target=EfficientMarkovWord
 comment1.params=order
-comment1.target=MarkovWord(int)
+comment1.target=EfficientMarkovWord(int)
 comment2.params=seed
 comment2.target=void\ setRandom(int)
 comment3.params=text
@@ -14,4 +14,8 @@ comment6.params=
 comment6.target=void\ testIndexOf()
 comment7.params=keyGram
 comment7.target=java.util.ArrayList\ getFollows(WordGram)
-numComments=8
+comment8.params=
+comment8.target=void\ buildMap()
+comment9.params=
+comment9.target=void\ getFollows()
+numComments=10

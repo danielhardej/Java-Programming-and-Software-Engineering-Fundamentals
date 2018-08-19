@@ -1,5 +1,18 @@
+/**
+ * Java Programming: Principles of Software Design
+ * 
+ * Word N-Grams Programming Exercise: WordGram Class
+ * 
+ * Assignment I: Complete WordGram
+ * 
+ * @author Daniel J Hardej
+ * @version v1.0
+ * 
+ * 
+ **/
 
 public class WordGram {
+    
     private String[] myWords;
     private int myHash;
 
@@ -52,5 +65,8 @@ public class WordGram {
         shiftedWords[shiftedWords.length-1] = word;
         return new WordGram(shiftedWords, 0, shiftedWords.length);
     }
-
+    
+    public int hashCode () {
+        return this.toString().hashCode();
+    }
 }
