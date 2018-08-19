@@ -1,4 +1,17 @@
 #BlueJ class context
 comment0.target=MarkovWord
-comment0.text=\n\ Write\ a\ description\ of\ MarkovWord\ here.\n\ \n\ @author\ Daniel\ J\ Hardej\n\ @version\ v1.0\n
-numComments=1
+comment1.params=order
+comment1.target=MarkovWord(int)
+comment2.params=seed
+comment2.target=void\ setRandom(int)
+comment3.params=text
+comment3.target=void\ setTraining(java.lang.String)
+comment4.params=numWords
+comment4.target=java.lang.String\ getRandomText(int)
+comment5.params=words\ target\ start
+comment5.target=int\ indexOf(java.lang.String[],\ java.lang.String,\ int)
+comment6.params=
+comment6.target=void\ testIndexOf()
+comment7.params=key
+comment7.target=java.util.ArrayList\ getFollows(java.lang.String)
+numComments=8
