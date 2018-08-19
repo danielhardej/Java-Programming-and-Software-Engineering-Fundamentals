@@ -20,6 +20,7 @@ public class EfficientMarkovWord implements IMarkovModel {
     public EfficientMarkovWord (int order) {
         myOrder = order;
         myRandom = new Random();
+        myMap = new HashMap<WordGram, ArrayList<String>>();
     }
     
     public void setRandom(int seed) {
@@ -101,7 +102,6 @@ public class EfficientMarkovWord implements IMarkovModel {
     }
     
     public void buildMap() {
-        HashMap<WordGram,ArrayList<String>> mappedWords = new HashMap<WordGram, ArrayList<String>>();
         
         for (int i=0; i < myText.length-(myOrder-1); i++) {
             // create a new WordGram from myText for each iteration that
@@ -109,21 +109,25 @@ public class EfficientMarkovWord implements IMarkovModel {
             WordGram wg = new WordGram(myText, i, myOrder);
             
             // if a WordGram is not in the HashMap yet
-            if (!(mappedWords.containsKey(wg))) {
+            if (!(myMap.containsKey(wg))) {
                 // and we HAVE NOT reached the end of the myText array
                 if ((i + myOrder)<myText.length) {
                     // put the WordGram into an empty arraylist
+                    myMap.put(wg, new ArrayList<String>(Arrays.asList(myText[i+myOrder])));
                 }
                 // and we HAVE reached the end of the myText array
                 if ((i + myOrder)==myText.length) {
                     // create a new entry with key wg and and empty ArrayList as the values
-                    
+                    myMap.put(wg, new ArrayList<String>());
                 }
             }
             // if a WordGram is already in the HashMap
-            else if (mappedWords.containsKey(wg) && (i + myOrder)<myText.length) {
-                // do not enter anything for this case
-                
+            else if (myMap.containsKey(wg) && (i + myOrder)<myText.length) {
+                // do not enter anything for this case?
+                // ...or try to update the values?
+                ArrayList<String> currentValues = myMap.get(wg);
+                currentValues.add(myText[i+myOrder]);
+                myMap.replace(wg, currentValues);
             }
         }
     }
