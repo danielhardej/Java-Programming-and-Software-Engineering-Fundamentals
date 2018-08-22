@@ -17,5 +17,5 @@ comment7.target=java.util.ArrayList\ getFollows(WordGram)
 comment8.params=
 comment8.target=void\ buildMap()
 comment9.params=
-comment9.target=void\ getFollows()
+comment9.target=void\ printHashMapInfo()
 numComments=10

@@ -29,6 +29,8 @@ public class EfficientMarkovWord implements IMarkovModel {
     
     public void setTraining(String text){
         myText = text.split("\\s+");
+        buildMap();
+        
     }
     
     public String getRandomText(int numWords){
@@ -74,31 +76,7 @@ public class EfficientMarkovWord implements IMarkovModel {
     }
     
     private ArrayList<String> getFollows(WordGram keyGram) {
-        // finds the words that directly follow after any occurence of the
-        // word assigned to the variable key
-        
-        // adds these words to and returns the array list 'follows'
-        
-        // uses the helper function indexOf() to find the index of any
-        // occurence of the word assigned to key in a string array
-        
-        ArrayList<String> follows = new ArrayList<String>();
-        int pos = 0;
-        
-        while (pos < myText.length) {
-            int start = indexOf(myText, keyGram, pos);
-            if (start == -1) {
-                break;
-            }
-            if (start + keyGram.length() > myText.length-1) {
-                break;
-            }
-            String next = myText[start+1];
-            follows.add(next);
-            pos = start + 1;
-        }
-        
-        return follows;
+        return myMap.get(keyGram);
     }
     
     public void buildMap() {
@@ -124,7 +102,7 @@ public class EfficientMarkovWord implements IMarkovModel {
             // if a WordGram is already in the HashMap
             else if (myMap.containsKey(wg) && (i + myOrder)<myText.length) {
                 // do not enter anything for this case?
-                // ...or try to update the values?
+                // ...or try to update the values? Lets see how this goes...
                 ArrayList<String> currentValues = myMap.get(wg);
                 currentValues.add(myText[i+myOrder]);
                 myMap.replace(wg, currentValues);
@@ -132,7 +110,27 @@ public class EfficientMarkovWord implements IMarkovModel {
         }
     }
     
-    public void getFollows () {
+    public void printHashMapInfo() {
+        System.out.println("Keys in HashMap: " + myMap.size());
+        
+        int maxArrSize = 0;
+        WordGram keyWithMaxArrSize = null;
+        for (WordGram wg : myMap.keySet()) {
+            maxArrSize = Math.max(maxArrSize, myMap.get(wg).size());
+            if (myMap.get(wg).size()==maxArrSize) {
+                keyWithMaxArrSize = wg;
+            }
+        }
+        
+        System.out.println("Size of largest ArrayList in HashMap:   " +  maxArrSize);
+        System.out.println("WordGram with largest array in HashMap: " + keyWithMaxArrSize);
+        
+        if (myMap.size() < 30) {
+            System.out.println("WordGrams in HashMap: ");
+            for (WordGram wg : myMap.keySet()) {
+                System.out.println(wg);
+            }
+        }
         
     }
 }
